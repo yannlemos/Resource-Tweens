@@ -2,36 +2,30 @@
 class_name TModulate
 extends Tweeny
 
-@export var use_specific_starting_value: bool:
-	set(value):
-		if value == use_specific_starting_value: return
-		use_specific_starting_value = value
-		notify_property_list_changed()
-var starting_value: Color = Color.WHITE
-@export var final_value: Color
+var start_value: Color = Color.WHITE
+var target_value: Color = Color.WHITE
 
-var _tween: Tween
+func _get_tweened_property() -> NodePath:
+	return "modulate"
 
-func animate(target_object: CanvasItem) -> Tween:
-	if _tween:
-		_tween.kill()
-	var tween: Tween = target_object.create_tween()
-	if use_specific_starting_value:
-		target_object.modulate = starting_value
-	tween.tween_interval(delay)
-	tween.set_ease(ease).set_trans(transition).set_loops(loops)
-	tween.tween_property(target_object, "modulate", final_value, duration)
-	_tween = tween
-	return _tween
+func _get_target_value() -> Variant:
+	return target_value
+
+func _reset_to_start_value():
+	_target_object.modulate = start_value
 
 func _get_property_list():
 	if Engine.is_editor_hint():
 		var ret =[]
-		if use_specific_starting_value:
-			# This is how you add a normal variable, like String (TYPE_STRING), int (TYPE_INT)...etc
+		if mode == Mode.FIXED:
 			ret.append({
-			"name": &"starting_value",
+			"name": &"start_value",
 			"type": TYPE_COLOR,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			})
+		ret.append({
+		"name": &"target_value",
+		"type": TYPE_COLOR,
+		"usage": PROPERTY_USAGE_DEFAULT,
+		})
 		return ret

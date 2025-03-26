@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Tweenies"
+run/main_scene="uid://cw7c5yu77y6qk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
