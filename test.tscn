@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw7c5yu77y6qk"]
+
+[ext_resource type="Texture2D" uid="uid://sl67pqsmlam4" path="res://icon.svg" id="1_8uh7m"]
+[ext_resource type="Script" uid="uid://dp6qaok515mb2" path="res://test_node.gd" id="1_37kl0"]
+
+[node name="Node" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 290.0
+offset_top = 261.0
+offset_right = 330.0
+offset_bottom = 301.0
+texture = ExtResource("1_8uh7m")
+script = ExtResource("1_37kl0")
