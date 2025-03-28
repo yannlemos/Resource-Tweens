@@ -68,9 +68,12 @@ Since the initialization code is wrapped in a separate class, this minimizes the
 You can still use Tweens artisanally and initialize them by hand, but for small animations or recurrent ones, like a fade-in, you can use a saved ResourceTween instead.
 
 ## How To Contribute
-Everything is really rudimentary right now, but if you'd like to contribute, you can create new ResourceTween types by following the `TModulate` and `TPosition2D` examples in the repo. The downside of wrapping tweens in Resources is that you need specific classes for specific properties that you'll tween, so there's some upfront work to be done. However, there's a lot of potential to create really powerful and customizable classes that allows complex tweens to be simplified and editable in the inspector. So that's a good first step.
+Everything is really rudimentary right now, but if you'd like to contribute, you can create new ResourceTween types by following the `TModulate` and `TPosition2D` examples in the repo.
+The downside of wrapping tweens in Resources is that you need specific classes for specific properties that you'll tween, so there's some upfront work to be done. 
 
-You can follow this template:
+However, there's a lot of potential to create really powerful and customizable classes that allows complex tweens to be simplified and editable in the inspector. So that's a good first step.
+
+To create new ResourceTweens, create a script, inherit from the ResourceTween class and implement the overrides correctly. You can follow this template:
 ```
 # Specify the class_name following the current convention
 # e.g. TScale3D or TRotation2D
