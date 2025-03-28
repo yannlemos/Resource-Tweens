@@ -1,6 +1,6 @@
 @tool
 class_name TModulate
-extends Tweeny
+extends ResourceTween
 
 var start_value: Color = Color.WHITE
 var target_value: Color = Color.WHITE
@@ -11,8 +11,8 @@ func _get_tweened_property() -> NodePath:
 func _get_target_value() -> Variant:
 	return target_value
 
-func _reset_to_start_value():
-	_target_object.modulate = start_value
+func _get_start_value() -> Variant:
+	return start_value
 
 func _get_property_list():
 	if Engine.is_editor_hint():

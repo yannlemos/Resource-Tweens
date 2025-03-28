@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Tweenies"
+config/name="Resource Tweens"
+config/version="0.1"
 run/main_scene="uid://cw7c5yu77y6qk"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
