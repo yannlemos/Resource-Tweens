@@ -8,7 +8,6 @@ extends CanvasItem
 var _fade_tween: Tween = null
 var _movement_tween: Tween = null
 
-@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_up"):
 		if _fade_tween: _fade_tween.kill()
@@ -27,13 +26,12 @@ func _process(delta: float) -> void:
 		_movement_tween = move_to_origin.play(self)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		if _movement_tween:
-			_movement_tween.stop()
-			_movement_tween.custom_step(99)
-			_movement_tween.kill()
-			_movement_tween = null
-		if _fade_tween:
-			_fade_tween.stop()
-			_fade_tween.custom_step(99)
-			_fade_tween.kill()
-			_fade_tween = null
+		_force_finish_tween(_movement_tween)
+		_force_finish_tween(_fade_tween)
+
+func _force_finish_tween(tween: Tween):
+	if not tween: return
+	tween.stop()
+	tween.custom_step(99)
+	tween.kill()
+	tween = null
