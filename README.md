@@ -70,6 +70,30 @@ You can still use Tweens artisanally and initialize them by hand, but for small 
 ## How To Contribute
 Everything is really rudimentary right now, but if you'd like to contribute, you can create new ResourceTween types by following the `TModulate` and `TPosition2D` examples in the repo. The downside of wrapping tweens in Resources is that you need specific classes for specific properties that you'll tween, so there's some upfront work to be done. However, there's a lot of potential to create really powerful and customizable classes that allows complex tweens to be simplified and editable in the inspector. So that's a good first step.
 
+You can follow this template:
+```
+# Specify the class_name following the current convention
+# e.g. TScale3D or TRotation2D
+extends ResourceTween
+
+# You should specify the types here and use @export 
+# unless you're going to do editor shenanigans, 
+# like conditionally hiding variables and stuff like that
+var start_value
+var target_value
+
+func _get_tweened_property() -> NodePath:
+	# Set the property here as you would in a tween, 
+	# e.g. "modulate", or "position"
+	return ""
+
+func _get_start_value() -> Variant:
+	return start_value
+
+func _get_target_value() -> Variant:
+	return target_value
+```
+
 ## Credits
 
 Developed by [Yann Lemos](https://github.com/yannlemos).
